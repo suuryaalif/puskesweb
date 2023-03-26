@@ -12,7 +12,7 @@ $routes = Services::routes();
  */
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
-$routes->setDefaultMethod('index');
+$routes->setDefaultMethod('');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
@@ -29,7 +29,18 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Auth::index');
+$routes->get('/register', 'Auth::registerpage');
+$routes->add('/register/save', 'Auth::userRegister');
+$routes->get('/home', 'Home::index');
+$routes->get('/dashboard', 'Home::dashboard');
+$routes->get('/pelayanan-info-A', 'Home::pelayananA');
+$routes->get('/pelayanan-info-B', 'Home::pelayananB');
+$routes->get('/pelayanan-info-C', 'Home::pelayananC');
+$routes->get('/pelayanan-info-D', 'Home::pelayananD');
+$routes->post('/tambah_capai/(:any)', 'Home::tambahCapai/$1');
+$routes->post('/kurang_capai/(:any)', 'Home::kurangiCapai/$1');
+$routes->post('/hapus_upy/(:any)', 'Home::hapusUpy/$1');
 
 /*
  * --------------------------------------------------------------------
